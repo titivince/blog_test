@@ -63,7 +63,7 @@ require_once('close.php');
                     <h1 class="text-center p-2">Les derniers articles</h1>
                     <?php foreach($articles as $article){
                     ?>
-                    <div class="card-deck shadow mt-5 p-3" style="border-radius: 2em;background-color: #fefefe">
+                    <div class="card-deck shadow mb-5 p-3" style="border-radius: 2em;background-color: #fefefe">
                         <div class="card-body">
                             <h4 class="card-title"><?= $article['title'] ?></h4>
                             <p class="card-text"><?= $article['content'] ?></p>

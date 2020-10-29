@@ -65,16 +65,22 @@ require_once('close.php');
                 <section class="col-12">
                     <?php
                         if(!empty($_SESSION['erreur'])):
-                            echo '<div class="alert alert-danger" role="alert">
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     '. $_SESSION['erreur'].'
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>';
                     $_SESSION['erreur'] = "";
                     endif;
                     ?>
                     <?php
                         if(!empty($_SESSION['message'])):
-                            echo '<div class="alert alert-success" role="alert">
+                            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                     '. $_SESSION['message'].'
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>';
                     $_SESSION['message'] = "";
                     endif;
