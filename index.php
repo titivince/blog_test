@@ -52,7 +52,7 @@ require_once('close.php');
                     <div class="card-deck shadow mb-5 p-3" style="border-radius: 2em;background-color: #fefefe">
                         <div class="card-body">
                             <h4 class="card-title"><?= $article['title'] ?></h4>
-                            <p class="card-text"><?= $article['content'] ?></p>
+                            <p class="card-text"><?= excerpt($article['content']) ?></p>
                             <div class="card-footer">
                                 <small class="text-muted">Publier le : <?= $article['created_at'] ?></small>
                                 <a href="detailArticle.php?slug=<?= $article['slug'] ?>" class="btn btn-primary btn-sm ml-4">Voir l'article</a>

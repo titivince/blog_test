@@ -63,7 +63,7 @@ require_once('close.php');
                         <div class="card-deck p-3 shadow mb-4" style="border-radius: 2em;background-color: #fefefe">
                             <div class="card-body">
                                 <h4 class="card-title"><?= $article['title'] ?></h4>
-                                <p class="card-text"><?= $article['content'] ?></p>
+                                <p class="card-text"><?= excerpt($article['content']) ?></p>
                                 <div class="card-footer">
                                     <small class="text-muted">Date de création : <?= $article['created_at'] ?></small>
                                     <small class="text-muted">Date de dernière modification : <?= $article['updated_at'] ?></small>

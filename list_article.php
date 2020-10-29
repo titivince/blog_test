@@ -80,13 +80,15 @@ require_once('close.php');
                         </div>
                         <button class="btn btn-primary mb-5">Envoyer</button>
                     </form>
+                    <div class="row">
+                    </div>
                     <?php // On boucle sur la variable articles
                         foreach($articles as $article):
                     ?>
                     <div class="card-deck p-3 shadow mb-5" style="border-radius: 2em;background-color: #fefefe"> <!-- liste des articles -->
                         <div class="card-body">
                             <h4 class="card-title"><?= $article['title'] ?></h4>
-                            <p class="card-text"><?= $article['content'] ?></p>
+                            <p class="card-text"><?= excerpt($article['content']) ?></p>
                             <p>#<?= $article['category_name'] ?></p>
                             <div class="card-footer">
                                 <small class="text-muted">Date de création : <?= $article['created_at'] ?></small>
