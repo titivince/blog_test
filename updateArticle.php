@@ -4,7 +4,6 @@ session_start();
 require('function.php');
 $categorys = selectCategory();
 
-
 if($_POST){
     if(isset($_POST['id']) && !empty($_POST['id'])
         && isset($_POST['title']) && !empty($_POST['title'])
@@ -21,7 +20,6 @@ if($_POST){
         //fonction permettant de générer un slug
         $slug = slugify($title);
 
-
         $sql = "UPDATE articles SET title = :title, content = :content, updated_at = NOW(),category_id = :category, slug = :slug WHERE id = :id";
 
         $query = $db->prepare($sql);
@@ -34,7 +32,6 @@ if($_POST){
 
         $query->execute();
 
-
         $_SESSION['message'] = "Article modifié";
         require_once('close.php');
 
@@ -43,7 +40,6 @@ if($_POST){
         $_SESSION['erreur'] = "Le formulaire est incomplet";
     }
 }
-
 // Est-ce que l'id existe et n'est pas vide dans l'URL
 if(isset($_GET['id']) && !empty($_GET['id'])){
     require_once('connect.php');
@@ -87,7 +83,24 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous">
     </head>
-    <body>
+    <body style="background-color: #fadcac">
+        <nav class="navbar navbar-expand-xl navbar-light bg-light"> <!-- nav bar -->
+            <a class="navbar-brand" href="#">Acceuil</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="list_article.php">Tout les articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="createArticle.php">Créer un article</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <main class="container">
             <div class="row">
                 <section class="col-12">
@@ -97,31 +110,30 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                                         '. $_SESSION['erreur'].'
                                     </div>';
                         $_SESSION['erreur'] = "";
-                    }
-                    ?>
-                    <h1>Modifier un Article</h1>
+                    } ?>
+                    <h1 class="mt-3">Modifier un Article</h1>
                     <form method="POST">
                         <div class="form-group">
-                            <label for="title">title</label>
+                            <h5 for="title">Titre</h5>
                             <input type="text" id="title" name="title" class="form-control" value="<?= $title['title']?>">
                         </div>
                         <div class="form-group">
-                            <label for="content">content</label>
-                            <input type="text" id="content" name="content" class="form-control" value="<?= $title['content']?>">
+                            <h5 for="content">Contenue</h5>
+                            <textarea type="text" id="content" rows="10" name="content" class="form-control" value="<?= htmlentities($title['content']) ?>"><?= htmlentities($title['content']) ?></textarea>
                         </div>
-            </div><br><hr>
-            <div class="form-group">
-                <select class="form-control" name="category">
-                    <option type="text" value="<?= $title['category_id']?>">choisir une catégorie</option>
-                    <?php foreach($categorys as $category ): ?>
-                        <option value="<?= $category['id'] ?>"><?= $category['category_name'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <input type="hidden" value="<?= $title['id']?>" name="id">
-            <button class="btn btn-primary">Envoyer</button>
-            </form>
-            </section>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="category">
+                                <option type="text" value="<?= $title['category_id']?>">choisir une catégorie</option>
+                                <?php foreach($categorys as $category ): ?>
+                                    <option value="<?= $category['id'] ?>"><?= $category['category_name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <input type="hidden" value="<?= $title['id']?>" name="id">
+                        <button class="btn btn-success">Modifier</button>
+                    </form>
+                </section>
             </div>
         </main>
     </body>
