@@ -8,19 +8,23 @@ require('function.php');
 
 $categorys = selectCategory();
 
-// selection de toutes les colonnes de la table category et articles avec jointure de category.id
-$sql = "SELECT * FROM  articles  ORDER BY created_at DESC ";
+
+// selection de toutes les colonnes de la table category et articles avec jointure de category.id 
+$sql = "SELECT * FROM category, articles  WHERE articles.category_id = category.id ORDER BY created_at DESC";
 // On prépare la requête
 $query = $db->prepare($sql);
+
 // On exécute la requête
 $query->execute();
+
 // On stocke le résultat dans un tableau associatif
 $articles = $query->fetchAll(PDO::FETCH_ASSOC);
 
-$categorys = "SELECT * FROM category ";
-$req = $db->prepare($categorys);
-$req->execute();
-$cats = $req->fetchAll(PDO::FETCH_ASSOC);
+$cats = selectCategory();
+
+
+
+
 
 require_once('close.php');
 ?>
@@ -78,7 +82,7 @@ require_once('close.php');
                     <h1 class="text-center m-3">Liste des articles </h1>
                     <form action="articlesByCat.php" method="GET">
                         <div class="form-group mt-3">
-                            <select class="form-control " name="category_id">
+                        <select class="form-control " name="category_id">
                                 <option type="text" value="<?= $articles['category_id']?>">Voir les articles par Catégorie</option>
                                 <?php foreach($cats as $cat ): ?>
                                     <option value ="<?= $cat['id'] ?>"><?= $cat['category_name']?></option>
@@ -95,7 +99,7 @@ require_once('close.php');
                         <div class="card-body">
                             <h4 class="card-title"><?= $article['title'] ?></h4>
                             <p class="card-text"><?= $article['content'] ?></p>
-                            <p>#<?= $categorys['category_name'] ?></p>
+                            <p>#<?= $article['category_name'] ?></p>
                             <div class="card-footer">
                                 <small class="text-muted">Date de création : <?= $article['created_at'] ?></small>
                                 <small class="text-muted">Date de dernière modification : <?= $article['updated_at'] ?></small>

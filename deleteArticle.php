@@ -41,7 +41,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     // On exécute la requête
     $query->execute();
     $_SESSION['message'] = "article supprimé";
-    header('Location: index.php');
+    header('Location: list_article.php');
 
 
 }else{
