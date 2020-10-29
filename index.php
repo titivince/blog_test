@@ -60,7 +60,7 @@ require_once('close.php');
         <main class="container">
             <div class="row">
                 <section class="col-12">
-                    <h1 class="text-center p-2">Les derniers articles</h1>
+                    <h1 class="text-center p-2">Articles à la unes</h1>
                     <?php foreach($articles as $article){
                     ?>
                     <div class="card-deck shadow mb-5 p-3" style="border-radius: 2em;background-color: #fefefe">
