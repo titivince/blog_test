@@ -8,7 +8,6 @@ require('function.php');
 
 $categorys = selectCategory();
 
-
 // selection de toutes les colonnes de la table category et articles avec jointure de category.id 
 $sql = "SELECT * FROM category, articles  WHERE articles.category_id = category.id ORDER BY created_at DESC";
 // On prépare la requête
@@ -21,10 +20,6 @@ $query->execute();
 $articles = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $cats = selectCategory();
-
-
-
-
 
 require_once('close.php');
 ?>
@@ -45,20 +40,7 @@ require_once('close.php');
                 crossorigin="anonymous"></script>
     </head>
     <body style="background-color: #fadcac">
-        <nav class="navbar navbar-expand-xl navbar-light bg-light"> <!-- nav bar -->
-            <a class="navbar-brand" href="index.php">Acceuil</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="createArticle.php">Créer un article</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <?php include ('nav.php'); ?>
                     <!-- contenue -->
         <main class="container">
             <div class="row">

@@ -4,7 +4,6 @@ session_start();
 require_once('connect.php');
 require('function.php');
 
-
 $categorys = selectCategory();
 
     if($_POST){
@@ -41,7 +40,6 @@ $categorys = selectCategory();
             $_SESSION['erreur'] = "Le formulaire est incomplet";
         }
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,20 +59,7 @@ $categorys = selectCategory();
                 crossorigin="anonymous"></script>
     </head>
     <body style="background-color: #fadcac">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!-- nav bar -->
-            <a class="navbar-brand" href="index.php">Acceuil</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="list_article.php">Tout les articles</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <?php include ('nav.php'); ?>
         <main class="container">
             <div class="row">
                 <section class="col-12">

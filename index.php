@@ -7,6 +7,8 @@ require_once('connect.php');
 require('function.php');
 
 $categorys = selectCategory();
+//récupere l'url
+$current = pathinfo($_SERVER['REQUEST_URI'], PATHINFO_BASENAME);
 
 // selection de toutes les colonnes de la table category et articles avec jointure de category.id
 $sql = "SELECT * FROM category, articles  WHERE articles.category_id = category.id ORDER BY created_at DESC LIMIT 3";
@@ -39,23 +41,7 @@ require_once('close.php');
         <title>Blog</title>
     </head>
     <body style="background-color: #fadcac">
-        <nav class="navbar navbar-expand-xl navbar-light bg-light"> <!-- nav bar -->
-            <a class="navbar-brand" href="#">Acceuil</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="list_article.php">Tout les articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="createArticle.php">Créer un article</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php include ('nav.php'); ?>
                             <!-- contenue -->
         <main class="container">
             <div class="row">

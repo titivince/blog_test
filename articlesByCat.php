@@ -8,7 +8,6 @@ if(isset($_GET['category_id']) && !empty($_GET['category_id'])){
     require_once('connect.php');
     require('function.php');
 
-
     $sql = "SELECT * FROM  articles WHERE category_id = $_GET[category_id] ORDER BY created_at DESC ";
     $query = $db->prepare($sql);
 
@@ -22,7 +21,6 @@ if(isset($_GET['category_id']) && !empty($_GET['category_id'])){
     $req = $db->prepare($category);
     $req->execute();
     $cat = $req->fetch();
-
 }
 require_once('close.php');
 ?>
@@ -38,23 +36,7 @@ require_once('close.php');
               crossorigin="anonymous">
     </head>
     <body style="background-color: #fadcac;">
-        <nav class="navbar navbar-expand-xl navbar-light bg-light"> <!-- nav bar -->
-            <a class="navbar-brand" href="index.php">Acceuil</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="list_article.php">Tout les articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="createArticle.php">Créer un article</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php include ('nav.php'); ?>
         <main class="container">
             <div class="row">
                 <section class="col-12">
@@ -72,9 +54,7 @@ require_once('close.php');
                 '. $_SESSION['message'].'
                 </div>';
                         $_SESSION['message'] = "";
-                    endif;
-
-                    ?>
+                    endif; ?>
                     <h1 class="text-center m-3">Liste des articles <?= $cat['category_name'] ?></h1>
                     <?php
                         // On boucle sur la variable articles
