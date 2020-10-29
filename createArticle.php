@@ -81,7 +81,7 @@ $categorys = selectCategory();
                     <div class="input-group-prepend">
                         <span class="input-group-text">Contenu de votre article</span>
                     </div>
-                    <textarea name="content" class="form-control" aria-label="With textarea"></textarea>
+                    <textarea  style="resize:none;" name="content" rows="5" class="form-control" aria-label="With textarea"></textarea>
                 </div><br>
                 <div class="form-group">
                     <select class="form-control" name="category" required>

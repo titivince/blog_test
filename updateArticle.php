@@ -119,7 +119,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                         </div>
                         <div class="form-group">
                             <h5 for="content">Contenue</h5>
-                            <textarea type="text" id="content" rows="10" name="content" class="form-control" value="<?= htmlentities($title['content']) ?>"><?= htmlentities($title['content']) ?></textarea>
+                            <textarea style="resize:none;" type="text" id="content" rows="10" name="content" class="form-control" value="<?= htmlentities($title['content']) ?>"><?= htmlentities($title['content']) ?></textarea>
                         </div>
                         </div>
                         <div class="form-group">
